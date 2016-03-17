@@ -2,8 +2,24 @@ language: java
 jdk:
   - oraclejdk8
   - oraclejdk7
+before_install:
+  - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
+  - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
+install:
+#  - mvn --settings .travis/settings.xml install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - mvn --settings .travis/settings.xml install -B -V
 branches:
   only:
     - /^(?i:feature)/.*$/
     - develop
     - master
+deploy:
+  skip_cleanup: true
+  -
+    provider: script
+    script:
+      - mvn clean deploy --settings .travis/settings.xml -DskipTests=true -B -U
+    on:
+      repo: Intuit/Autumn
+      branch: master
+      jdk: oraclejdk7

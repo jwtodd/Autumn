@@ -36,7 +36,7 @@ import static org.slf4j.LoggerFactory.getLogger;
 
 /**
  * A property value retriever which provides for operational overrides, namely in order of precedence:
- * <p/>
+ *
  * System.getEnv()
  * System.getProperty()
  * provided property default value
