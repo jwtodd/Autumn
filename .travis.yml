@@ -19,8 +19,9 @@ branches:
 deploy:
   -
     provider: script
-    script: mvn clean deploy --settings .travis/settings.xml -DskipTests=true -B -U
+    script: mvn --settings .travis/settings.xml -DskipTests=true clean deploy -B -U
     on:
-      repo: Intuit/Autumn
+#      repo: Intuit/Autumn
+      repo: jwtodd/Autumn
       branch: master
       jdk: oraclejdk7
