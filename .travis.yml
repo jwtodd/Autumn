@@ -5,8 +5,11 @@ jdk:
 before_install:
   - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
   - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
-install:
-#  - mvn --settings .travis/settings.xml install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+#install:
+##  - mvn --settings .travis/settings.xml install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+#  - mvn --settings .travis/settings.xml install -B -V
+script:
+# FIXME: add gen doc gen src
   - mvn --settings .travis/settings.xml install -B -V
 branches:
   only:
