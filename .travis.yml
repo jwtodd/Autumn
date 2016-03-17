@@ -14,11 +14,9 @@ branches:
     - develop
     - master
 deploy:
-  skip_cleanup: true
   -
     provider: script
-    script:
-      - mvn clean deploy --settings .travis/settings.xml -DskipTests=true -B -U
+    script: mvn clean deploy --settings .travis/settings.xml -DskipTests=true -B -U
     on:
       repo: Intuit/Autumn
       branch: master
