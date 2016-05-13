@@ -2,13 +2,15 @@ package com.intuit.data.autumn.crypto;
 
 import com.google.inject.Inject;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
  * This class takes in a Map of version number & its associated Encryptor and calls the appropriate Encryptor to
  * decrypt the message.
  */
-public class Decryptor implements java.io.Serializable {
+
+public class Decryptor implements Serializable {
 
     private Map<String, Encryptor> encryptors;
 
@@ -20,8 +22,8 @@ public class Decryptor implements java.io.Serializable {
     /**
      * Decrypt the message for the given version.
      *
-     * @param version
-     * @param encryptedMessage
+     * @param version          encryptor versions
+     * @param encryptedMessage encrypted data
      * @return Decrypted message
      */
     public String decrypt(String version, String encryptedMessage) {
